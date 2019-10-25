@@ -42,4 +42,4 @@ class SaveQuote():
         return get_quotes_btn
 
     def check_quotes_load_properly(self):
-        self.long_wait.until(EC.invisibility_of_element_located((By.CSS_SELECTOR, 'div[id="loading_quotes_progress"]')))
+        self.long_wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, '.progress-bar-loader div[style="width: 100%;"]')))
