@@ -79,10 +79,8 @@ class InsuredDiscount():
             if date.text == date_expire:
                 return date
 
-    def check_current_premium_experiment(self):
-        self.short_wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'input[id="insured_discount_insured_months_0"]')))
-
     def select_insured_duration(self, duration_option):
+        self.wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'input[id="insured_discount_insured_months_0"]')))
         insured_duration = self.driver.find_elements_by_css_selector('div[id="prior_coverage_insured_months"] label')
         for duration in insured_duration:
             if duration.text == duration_option:
@@ -108,10 +106,11 @@ class InsuredDiscount():
         continue_btn = self.driver.find_element_by_css_selector('button[id="continue_button"]')
         return continue_btn
 
-    def select_current_premium_bi(self):
-        self.wait.until(EC.element_to_be_clickable(
+    def check_current_premium_experiment(self):
+        self.short_wait.until(EC.element_to_be_clickable(
             (By.CSS_SELECTOR, 'div[id="insured_discount_current_coverage_bi"] label[data-analytics-label="15,30"]')))
 
+    def select_current_premium_bi(self):
         current_premium_bi = self.driver.find_element_by_css_selector(
             'div[id="insured_discount_current_coverage_bi"] label[data-analytics-label="15,30"]')
         return current_premium_bi
