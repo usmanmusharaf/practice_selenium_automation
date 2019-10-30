@@ -5,7 +5,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from helpers.helper import Helper
 
 
-class CarMake():
+class CarMake:
 
     def __init__(self, driver):
         self.driver = driver

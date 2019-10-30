@@ -5,7 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from helpers.helper import Helper
 
 
-class HomePage():
+class HomePage:
 
     def __init__(self, driver):
         self.driver = driver
