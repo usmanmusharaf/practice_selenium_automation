@@ -100,3 +100,10 @@ class InsuredDiscount():
         self.wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'button[id="continue_button"]')))
         continue_btn = self.driver.find_element_by_css_selector('button[id="continue_button"]')
         return continue_btn
+
+    def select_current_premium_bi(self, cp_value):
+        self.wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'div[id="insured_discount_current_coverage_bi"] label[data-analytics-label="15,30"]')))
+        current_premium_bi = self.driver.find_elements_by_css_selector('ddiv[id="insured_discount_current_coverage_bi"] label[data-analytics-label="15,30"]')
+        for cp_bi in current_premium_bi:
+            if cp_bi.text == cp_value:
+                return cp_bi
