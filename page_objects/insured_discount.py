@@ -8,7 +8,7 @@ class InsuredDiscount:
     def __init__(self, driver):
         self.driver = driver
         self.wait = WebDriverWait(self.driver, 15)
-        self.short_wait = WebDriverWait(self.driver, 5)
+        self.short_wait = WebDriverWait(self.driver, 3)
 
     def select_prior_insurance(self, insured_status, prior_carrier, month_and_year, date_expire):
 

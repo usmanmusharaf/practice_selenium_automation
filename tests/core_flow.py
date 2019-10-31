@@ -19,7 +19,7 @@ class CoreFlow(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome()
         self.driver.maximize_window()
-        self.driver.get("https://test.insurify.com")
+        self.driver.get("https://insurify.com")
         self.assertIn("Insurify® - Official Site: Compare Insurance Quotes with Insurify", self.driver.title)
 
         self.homepage = HomePage(self.driver)
