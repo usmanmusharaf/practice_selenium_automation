@@ -1,5 +1,3 @@
-import time
-
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
@@ -44,5 +42,5 @@ class SaveQuote:
     def check_quotes_load_properly(self):
         try:
             self.long_wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, '.progress-bar-loader div[style="width: 100%;"]')))
-        except:
-            print('Loading quotes took too much time !')
+        except TimeoutError:
+            print('Loading took too much time !')

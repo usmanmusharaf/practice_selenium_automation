@@ -19,7 +19,7 @@ class CoreFlow(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome()
         self.driver.maximize_window()
-        self.driver.get("https://test.insurify.com")
+        self.driver.get("https://insurify.com")
         self.assertIn("Insurify® - Official Site: Compare Insurance Quotes with Insurify", self.driver.title)
 
         self.homepage = HomePage(self.driver)
@@ -61,7 +61,6 @@ class CoreFlow(unittest.TestCase):
         self.driver_summary.select_driver_summary_options()
         self.save_quote.fill_up_save_quote_form('test.carmine@gmail.com', '9999999999', '599 Gresham Ave')
 
-        time.sleep(3)
 
     def tearDown(self):
         self.driver.close()
