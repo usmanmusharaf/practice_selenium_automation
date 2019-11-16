@@ -9,9 +9,10 @@ from page_objects.discounts import Discounts
 from page_objects.driver_info import DriverInfo
 from page_objects.driver_summary import DriverSummary
 from page_objects.homepage import HomePage
-from page_objects.insured_discount import InsuredDiscount
+from page_objects.prior_insurance import PriorInsurance
 from page_objects.professional_discount import ProfessionalDiscount
 from page_objects.save_quote import SaveQuote
+from page_objects.student_discount import StudentDiscount
 
 
 class CoreFlow(unittest.TestCase):
@@ -27,11 +28,12 @@ class CoreFlow(unittest.TestCase):
         self.car_detail = CarDetails(self.driver)
         self.driver_info = DriverInfo(self.driver)
         self.discounts = Discounts(self.driver)
-        self.insured_discount = InsuredDiscount(self.driver)
+        self.prior_insurance = PriorInsurance(self.driver)
         self.professional_discount = ProfessionalDiscount(self.driver)
         self.add_incident = AddIncident(self.driver)
         self.driver_summary = DriverSummary(self.driver)
         self.save_quote = SaveQuote(self.driver)
+        self.student_discount = StudentDiscount(self.driver)
 
     def test_flow_in_ca_state(self):
         '''insurify_happy_flow_in_california'''
@@ -40,7 +42,8 @@ class CoreFlow(unittest.TestCase):
         self.car_detail.select_car_details()
         self.driver_info.enter_driver_info('90001')
         self.discounts.select_discount()
-        self.insured_discount.select_prior_insurance('yes', 'Esurance', 'March, 2020', '13')
+        self.prior_insurance.select_prior_insurance('yes', 'Esurance', 'March, 2020', '13')
+        self.student_discount.select_student_options()
         self.professional_discount.enter_professional_information()
         self.add_incident.add_incident()
         self.driver_summary.select_driver_summary_options()
@@ -53,7 +56,7 @@ class CoreFlow(unittest.TestCase):
     #     self.car_detail.select_car_details()
     #     self.driver_info.enter_driver_info('60007')
     #     self.discounts.select_discount()
-    #     self.insured_discount.select_no_prior_insurance()
+    #     self.prior_insurance.select_no_prior_insurance()
     #     self.professional_discount.enter_professional_information()
     #     self.add_incident.add_incident()
     #     self.driver_summary.select_driver_summary_options()

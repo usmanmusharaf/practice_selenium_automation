@@ -3,12 +3,12 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
 
-class InsuredDiscount:
+class PriorInsurance:
 
     def __init__(self, driver):
         self.driver = driver
         self.wait = WebDriverWait(self.driver, 15)
-        self.short_wait = WebDriverWait(self.driver, 3)
+        self.short_wait = WebDriverWait(self.driver, 2)
 
     def select_prior_insurance(self, insured_status, prior_carrier, month_and_year, date_expire):
 

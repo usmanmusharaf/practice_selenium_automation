@@ -46,6 +46,6 @@ class CarDetails:
         return payment_status
 
     def select_deductible(self, deductible_type):
-        self.wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'label[data-analytics-label="no_coverage"]')))
+        self.wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, 'input[id="car_details_car_coverage_liability_only"]')))
         deductible = self.driver.find_element_by_css_selector('label[data-analytics-label="'+deductible_type+'"]')
         return deductible

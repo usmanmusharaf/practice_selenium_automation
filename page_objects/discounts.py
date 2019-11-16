@@ -17,6 +17,7 @@ class Discounts():
         self.select_discount_card('has_job').click()
         self.select_discount_card('is_military').click()
         self.select_discount_card('is_aaa_member').click()
+        self.select_discount_card('is_student').click()
         self.discount_continue_button().click()
 
     def select_discount_card(self, discount):
