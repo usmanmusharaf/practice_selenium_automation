@@ -40,8 +40,8 @@ class CoreFlow(unittest.TestCase):
         self.homepage.enter_zipcode_and_proceed('90001')
         self.car_make.select_car()
         self.car_detail.select_car_details()
-        self.driver_info.enter_driver_info('90001')
-        self.discounts.select_discount()
+        self.driver_info.enter_driver_info('CA')
+        self.discounts.select_all_discounts()
         self.prior_insurance.select_prior_insurance('yes', 'Esurance', 'March, 2020', '13')
         self.student_discount.select_student_options()
         self.professional_discount.enter_professional_information()
@@ -49,18 +49,18 @@ class CoreFlow(unittest.TestCase):
         self.driver_summary.select_driver_summary_options()
         self.save_quote.fill_up_save_quote_form('test.carmine@gmail.com', '9999999999', '599 Gresham Ave')
 
-    # def test_flow_in_il_state(self):
-    #     '''insurify_happy_flow_in_illinois'''
-    #     self.homepage.enter_zipcode_and_proceed('60007')
-    #     self.car_make.select_car()
-    #     self.car_detail.select_car_details()
-    #     self.driver_info.enter_driver_info('60007')
-    #     self.discounts.select_discount()
-    #     self.prior_insurance.select_no_prior_insurance()
-    #     self.professional_discount.enter_professional_information()
-    #     self.add_incident.add_incident()
-    #     self.driver_summary.select_driver_summary_options()
-    #     self.save_quote.fill_up_save_quote_form('test.carmine@gmail.com', '9999999999', '599 Gresham Ave')
+    def test_flow_in_il_state(self):
+        '''insurify_happy_flow_in_illinois'''
+        self.homepage.enter_zipcode_and_proceed('60007')
+        self.car_make.select_car()
+        self.car_detail.select_car_details()
+        self.driver_info.enter_driver_info('IL')
+        self.discounts.select_all_discounts_except_student()
+        self.prior_insurance.select_no_prior_insurance()
+        self.professional_discount.enter_professional_information()
+        self.add_incident.add_incident()
+        self.driver_summary.select_driver_summary_options()
+        self.save_quote.fill_up_save_quote_form('test.carmine@gmail.com', '9999999999', '855 Spring Creek Ct Unit A')
 
 
     def tearDown(self):

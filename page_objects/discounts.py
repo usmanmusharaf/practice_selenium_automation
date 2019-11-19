@@ -11,13 +11,21 @@ class Discounts():
         self.driver = driver
         self.wait = WebDriverWait(self.driver, 15)
 
-    def select_discount(self):
+    def select_all_discounts(self):
         self.wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'a[id="own_home"]')))
         self.select_discount_card('own_home').click()
         self.select_discount_card('has_job').click()
         self.select_discount_card('is_military').click()
         self.select_discount_card('is_aaa_member').click()
         self.select_discount_card('is_student').click()
+        self.discount_continue_button().click()
+
+    def select_all_discounts_except_student(self):
+        self.wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'a[id="own_home"]')))
+        self.select_discount_card('own_home').click()
+        self.select_discount_card('has_job').click()
+        self.select_discount_card('is_military').click()
+        self.select_discount_card('is_aaa_member').click()
         self.discount_continue_button().click()
 
     def select_discount_card(self, discount):

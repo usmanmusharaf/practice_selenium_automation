@@ -12,7 +12,7 @@ class DriverInfo:
         self.wait = WebDriverWait(self.driver, 15)
         self.helper = Helper()
 
-    def enter_driver_info(self, zipcode):
+    def enter_driver_info(self, state_id):
         self.wait.until(
             EC.presence_of_element_located((By.CSS_SELECTOR, '.is-current a[href="#/drivers/driver_summary"]')))
         self.enter_firstname().send_keys('Carmine')
@@ -21,7 +21,7 @@ class DriverInfo:
         self.select_gender('1').click()
 
         # for CA state
-        if zipcode == '90001':
+        if state_id == 'CA':
             self.wait.until(EC.element_to_be_clickable(
                 (By.CSS_SELECTOR, 'label[data-field="was_license_suspended"]:nth-of-type(1)')))
             self.select_license_status().click()
@@ -30,7 +30,7 @@ class DriverInfo:
             pass
 
         # for CA state
-        if zipcode == '90001':
+        if state_id == 'CA':
             pass
         else:
             self.wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'label[data-analytics-label="excellent"]')))
