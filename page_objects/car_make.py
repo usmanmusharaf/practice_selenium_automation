@@ -46,5 +46,6 @@ class CarMake:
             if trim.text == make_trim:
                 return trim
 
-    def car_label_is_present(self):
+    @staticmethod
+    def car_label_is_present():
         return EC.presence_of_element_located((By.CSS_SELECTOR, '.tag-label'))

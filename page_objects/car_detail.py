@@ -18,7 +18,8 @@ class CarDetails:
         self.select_deductible('no_coverage').click()
         self.save_and_continue_button().click()
 
-    def assert_car_detail_form(self):
+    @staticmethod
+    def assert_car_detail_form():
         return EC.presence_of_element_located((By.CSS_SELECTOR, 'form[id="car_details_form"]'))
 
     def select_car_usage(self, car_used_for):
@@ -32,7 +33,8 @@ class CarDetails:
             '.btn-group > label[data-field="mileage_per_day"]:nth-of-type(' + str(int(value / 5)) + ')')
         return distance
 
-    def card_to_be_clickable(self):
+    @staticmethod
+    def card_to_be_clickable():
         usage_assertion = EC.element_to_be_clickable((By.CSS_SELECTOR, 'a[id="used_for_work"]'))
         return usage_assertion
 
@@ -47,5 +49,5 @@ class CarDetails:
 
     def select_deductible(self, deductible_type):
         self.wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, 'input[id="car_details_car_coverage_liability_only"]')))
-        deductible = self.driver.find_element_by_css_selector('label[data-analytics-label="'+deductible_type+'"]')
+        deductible = self.driver.find_element_by_css_selector('label[data-analytics-label="' + deductible_type + '"]')
         return deductible
