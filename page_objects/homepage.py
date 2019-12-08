@@ -12,7 +12,7 @@ class HomePage:
         self.wait = WebDriverWait(self.driver, 15)
 
         # page_objects
-        self.helper = Helper()
+        self.helper = Helper(self.driver)
 
     def enter_zipcode_and_proceed(self, zipcode):
         self.wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, 'div[id="intercom-container"]')))

@@ -9,8 +9,8 @@ class CarMake:
 
     def __init__(self, driver):
         self.driver = driver
-        self.helper = Helper()
         self.wait = WebDriverWait(self.driver, 15)
+        self.helper = Helper(self.driver)
 
     def select_car(self):
         self.wait.until(self.car_label_is_present())

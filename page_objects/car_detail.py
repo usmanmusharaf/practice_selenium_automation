@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
+from helpers.helper import Helper
 
 
 class CarDetails:
@@ -9,13 +10,16 @@ class CarDetails:
         self.driver = driver
         self.wait = WebDriverWait(self.driver, 15)
 
+        # page_objects
+        self.helper = Helper(self.driver)
+
     def select_car_details(self):
         self.wait.until(self.card_to_be_clickable())
         self.select_car_usage('Commute to school').click()
         self.select_car_usage('Rideshare Driver').click()
         self.select_distance_each_way(10).click()
-        self.select_payment_status('lease').click()
-        self.select_deductible('no_coverage').click()
+        self.select_payment_status('lean').click()
+        self.select_deductible('full_coverage').click()
         self.save_and_continue_button().click()
 
     @staticmethod
@@ -38,16 +42,17 @@ class CarDetails:
         usage_assertion = EC.element_to_be_clickable((By.CSS_SELECTOR, 'a[id="used_for_work"]'))
         return usage_assertion
 
-    def save_and_continue_button(self):
-        move_to_driver_button = self.driver.find_element_by_css_selector('button[id="car_details_continue_to_driver"]')
-        return move_to_driver_button
-
     def select_payment_status(self, payment):
         payment_status = self.driver.find_element_by_css_selector(
             'label[for="car_details_payment_status_' + payment + '_radio"]')
         return payment_status
 
     def select_deductible(self, deductible_type):
-        self.wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, 'input[id="car_details_car_coverage_liability_only"]')))
+        self.helper.assert_for_presence_of_element('label[data-field="deductibles"]:nth-child(1)')
         deductible = self.driver.find_element_by_css_selector('label[data-analytics-label="' + deductible_type + '"]')
         return deductible
+
+    def save_and_continue_button(self):
+        self.helper.assert_for_element_to_be_clickable('button[id="car_details_continue_to_driver"]')
+        move_to_driver_button = self.driver.find_element_by_css_selector('button[id="car_details_continue_to_driver"]')
+        return move_to_driver_button

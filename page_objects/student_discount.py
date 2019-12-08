@@ -6,12 +6,13 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 from helpers.helper import Helper
 
+
 class StudentDiscount:
 
     def __init__(self, driver):
         self.driver = driver
         self.wait = WebDriverWait(self.driver, 15)
-        self.helper = Helper()
+        self.helper = Helper(self.driver)
 
     def select_student_options(self):
         self.check_page_load()
@@ -21,7 +22,8 @@ class StudentDiscount:
         time.sleep(5)
 
     def check_page_load(self):
-        self.wait.until(EC.text_to_be_present_in_element((By.CSS_SELECTOR, '.panel-header .normal'), 'You could qualify for a discount based on your GPA'))
+        self.wait.until(EC.text_to_be_present_in_element((By.CSS_SELECTOR, '.panel-header .normal'),
+                                                         'You could qualify for a discount based on your GPA'))
 
     def enter_gpa(self):
         gpa_score = self.driver.find_element_by_css_selector('input[id="student_discount_gpa_input"]')

@@ -62,7 +62,6 @@ class CoreFlow(unittest.TestCase):
     #     self.driver_summary.select_driver_summary_options()
     #     self.save_quote.fill_up_save_quote_form('test.carmine@gmail.com', '9999999999', '855 Spring Creek Ct Unit A')
 
-
     def tearDown(self):
         self.driver.close()
 

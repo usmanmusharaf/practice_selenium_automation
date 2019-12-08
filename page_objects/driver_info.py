@@ -10,7 +10,7 @@ class DriverInfo:
     def __init__(self, driver):
         self.driver = driver
         self.wait = WebDriverWait(self.driver, 15)
-        self.helper = Helper()
+        self.helper = Helper(self.driver)
 
     def enter_driver_info(self, state_id):
         self.wait.until(
